@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>weather</title>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+    <style>
+    .input-group {
+      margin-top: 100px;
+      color: #000;
+      background-color: rgb(247, 241, 239);
+      padding: 20px;
+      border-radius: 10px;
+    }
+    .form-control {
+      border-radius: 10px;
+      padding: 20px;
+    }
+    body {
+      background: #f2f2f2;
+    }
+    form {
+      margin-top: 20px;
+    }
+    .row {
+      margin-top: 20px;   
+    }
+    button {
+        border-radius: 10px;
+        padding: 20px;
+    }
+    .btn-default {
+      background-color: #27b0ff;
+      color: #fff;
+      border-radius: 10px;
+        padding: 10px;
+    }
+    #details {
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: 20px;
+      border-radius: 10px;
+      margin-top: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      backdrop-filter: blur(5px); /* Add blur effect */
+    }
+    #details h1 {
+      text-align: center;
+    }
+    #details:hover {
+      box-shadow: 0 0 10px 0 #27b0ff;
+    }
+    
+    #heading {
+      margin-top: 20px;
+      font-size: 3em; 
+      text-align:center;
+      text-shadow: #fcc9c9;
+    }
+    
+    </style>
+</head>
+
+<body>
+  <nav class="row" style="background: grey; color: white;">
+    <div><h1 class="col-md-3" id="heading">Weather App</h1></div>
+  </nav>
+  <br />
+  <br />
+  <center class="row">
+    <form action="" method="post" class="col-md-6 col-md-offset-3">
+      {% csrf_token %}
+      <div class="input-group">
+        <input type="text" class="form-control" name="city" placeholder="Search">
+        <div class="input-group-btn">
+          <button class="btn btn-default" type="submit">
+            <i class="glyphicon glyphicon-search"></i>
+          </button>
+        </div>
+        <form>
+  </center>
+  <div class="row">
+    {% if data.country_code %}
+
+    <div id="details" class="col-md-6 col-md-offset-3">
+      <h1><b>{{city}}</b> city</h1>
+      <br>
+        <h3><b>country code :</b> {{data.country_code}}</h1>
+        <h3><b>temp :</b> {{data.temp}}</h3>
+        <h3><b>pressure :</b> {{data.pressure}} </h3>
+        <h3><b>humidity :</b> {{data.humidity}}</h3>
+        <h3><b>Longitude </b>{{data.lon}}</b></h3>
+        <h3><b>Latitude </b>{{data.lat}}</h3>
+        <h3><b>wind deg :</b> {{data.wind_deg}}</h3>
+    </div>
+    {% endif %}
+  </div>
+</body>
+
+</html>
